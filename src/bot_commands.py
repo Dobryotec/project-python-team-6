@@ -26,17 +26,26 @@ def parse_input(user_input):
 
 
 @input_error
-def add_contact(args, book):
+def add_contact(args, address_book):
     name, phone = args
-    record = book.find(name)
-    if record != 'Contact not found':
-        record.add_phone(phone)
+    if name in address_book:
+        phones = [p.value for p in address_book[name].phones]
+        if phone in phones:
+            return "Number already exist for this contact"
+        else:
+            address_book[name].add_phone(phone)
     else:
         record = Record(name)
         record.add_phone(phone)
-        book.add_record(record)
+        address_book.add_record(record)
 
     return "Contact added."
+
+
+@input_error
+def find_contact(args, address_book):
+    value = args[0]
+    return address_book.find(value)
 
 
 @input_error
@@ -90,9 +99,9 @@ def add_birthday(args, address_book):
 
 @input_error
 def add_address(args, address_book):
-    name, address = args
+    name, *address = args
     if name in address_book:
-        address_book[name].add_address(address)
+        address_book[name].add_address(' '.join(address))
         return f"Address added for {name}"
     else:
         raise KeyError(f"Contact with {name} doesn't exist")

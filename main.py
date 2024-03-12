@@ -35,6 +35,8 @@ def main():
             print(add_address(args, book))
         elif command == "show-address":
             print(show_address(args, book))
+        elif command == "find-contact":
+            print(find_contact(args, book))
         else:
             print("Invalid command")
 
