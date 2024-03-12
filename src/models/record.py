@@ -1,4 +1,4 @@
-from src.models.address_book_components.components import *
+from src.models.address_book_fields.fields import *
 
 
 class Record:
