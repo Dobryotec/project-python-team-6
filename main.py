@@ -1,5 +1,6 @@
 from src.models.address_book import AddressBook
 from src.bot_commands import *
+from src.models.notes import *
 
 
 def main():
@@ -43,6 +44,12 @@ def main():
             print(change_email(args, book))
         elif command == "find-contact":
             print(find_contact(args, book))
+        elif command == "add-note":
+            print(add_note(args, book))
+        elif command == "delete-note":
+            print(delete_note(args, book))
+        elif command == "find-note":
+            print(find_note_by_title(args, book))
         else:
             print("Invalid command")
 

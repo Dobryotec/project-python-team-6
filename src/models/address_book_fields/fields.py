@@ -4,11 +4,20 @@ from src.exceptions import DateFormatException, PhoneException
 
 
 class Field:
-    def __init__(self, value):
+    def __init__(self, value, required=False, max_length=None):
         self.value = value
+        self.required = required
+        self.max_length = max_length
+
+    def validate(self):
+        if self.required and not self.value:
+            raise ValueError("This field is required.")
+        if self.max_length is not None and len(str(self.value)) > self.max_length:
+            raise ValueError(f"This field must be at most {self.max_length} characters long.")
+        # Додаткові перевірки
 
     def __str__(self):
-        return str(self.value)    
+        return str(self.value)
 
 
 class Name(Field):
@@ -55,3 +64,6 @@ class Day(Field):
         except ValueError:
             print("Days must be a number.")
             return None  
+            
+          
+    
