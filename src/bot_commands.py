@@ -1,5 +1,7 @@
 from src.exceptions import PhoneException, DateFormatException
 from src.models.record import Record
+from src.models.address_book_fields.fields import Day
+
 
 
 def input_error(func):
@@ -86,10 +88,15 @@ def show_birthday(args, address_book):
 
 
 @input_error
-def birthdays(address_book):
-    birthdays_per_week = address_book.get_birthdays_per_week()
-    if birthdays_per_week:
-        for day, names in birthdays_per_week.items():
-            return f"{day}: {', '.join(names)}"
-    else:
+def birthdays(book):
+     days = Day.validate_day("Enter number of days: ")
+
+     birthdays_within_days = book.get_birthdays_within_days(days)
+
+     if birthdays_within_days:
+        output = ""
+        for birthday_date, names in birthdays_within_days.items():
+            output += f"{birthday_date.strftime('%A, %d %B')}: {', '.join(names)}\n"
+        return output
+     else:
         return "No upcoming birthdays"
