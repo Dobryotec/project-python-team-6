@@ -29,7 +29,11 @@ def parse_input(user_input):
 def add_contact(args, address_book):
     name, phone = args
     if name in address_book:
-        address_book[name].add_phone(phone)
+        phones = [p.value for p in address_book[name].phones]
+        if phone in phones:
+            return "Number already exist for this contact"
+        else:
+            address_book[name].add_phone(phone)
     else:
         record = Record(name)
         record.add_phone(phone)

@@ -11,7 +11,10 @@ class AddressBook(UserDict):
     def load_from_file(self, filename):
         try:
             with open(filename, "rb") as file:
-                self.data = pickle.load(file)
+                content = pickle.load(file)
+            for k, record in content.items():
+                self.add_record(record)
+
         except FileNotFoundError:
             self.data = {}
 
