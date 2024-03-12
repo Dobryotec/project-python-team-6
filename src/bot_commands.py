@@ -59,6 +59,36 @@ def change_contact(args, address_book):
 
 
 @input_error
+def add_email(args, address_book):
+    name, email = args
+    if name in address_book:
+        address_book[name].add_email(email)
+        return f"Email added for {name}"
+    else:
+        raise KeyError(f"Contact with {name} doesn't exist")
+
+
+@input_error
+def change_email(args, address_book):  
+    name, new_email = args
+    if name in address_book:
+        address_book[name].edit_email(new_email)
+        return "Email changed"
+    else:
+        raise KeyError(f"Contact with name {name} doesn't exist")
+    
+
+@input_error
+def show_email(args, address_book):
+    name = args[0]
+    if name in address_book and address_book[name].email:
+        return f"Email of {name}: {address_book[name].email.value}"
+    else:
+        raise KeyError(f"Contact with {name} doesn't exist or email not set")
+    
+    
+
+@input_error
 def show_phone(args, address_book):
     name = args[0]
     if name in address_book:

@@ -35,6 +35,12 @@ def main():
             print(add_address(args, book))
         elif command == "show-address":
             print(show_address(args, book))
+        elif command == "add-email":
+            print(add_email(args, book))
+        elif command == "show-email":
+            print(show_email(args, book))
+        elif command == "change-email":
+            print(change_email(args, book))
         elif command == "find-contact":
             print(find_contact(args, book))
         else:

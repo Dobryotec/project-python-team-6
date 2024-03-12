@@ -7,6 +7,7 @@ class Record:
         self.phones = []  
         self.birthday = None
         self.address = None
+        self.email = None
 
     def add_phone(self, phone):
         phone_obj = Phone(phone)
@@ -40,10 +41,24 @@ class Record:
         address.validate_address()
         self.address = address
 
+    def add_email(self, email):
+        email_obj = Email(email)
+        email_obj.validate_email()
+        self.email = email_obj
+
+    def edit_email(self, new_email):
+        email_obj = Email(new_email)
+        email_obj.validate_email()
+        self.email = email_obj    
+
     def __str__(self):
         phones_info = '; '.join(p.value for p in self.phones)
         if self.birthday is not None:
             birthday_info = f", birthday: {self.birthday.value}"
         else:
-            birthday_info = ""   
-        return f"Contact name: {self.name.value}, phones: {phones_info}{birthday_info}"
+            birthday_info = "" 
+        if self.email is not None:
+            email_info = f", email: {self.email.value}"
+        else:
+            email_info = ""
+        return f"Contact name: {self.name.value}, phones: {phones_info}{birthday_info}{email_info}" 
