@@ -19,8 +19,13 @@ class AddressBook(UserDict):
         self.data[record.name.value] = record
 
     def find(self, value):
-        return self.data.get(value, "Contact not found")
-     
+        for name, record in self.data.items():
+            # record.address would be replaced with email after adding
+            if value == name or value == record.address.value:
+                return record
+            else:
+                return "Contact not found"
+
     def delete(self, name):
         del self.data[name]
 
