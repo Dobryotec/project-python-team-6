@@ -62,4 +62,4 @@ class Day(Field):
                 return value
         except ValueError:
             print("Days must be a number.")
-            return None  
+            return None

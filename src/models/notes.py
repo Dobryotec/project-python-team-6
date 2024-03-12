@@ -11,3 +11,4 @@ class Note:
             return f"Title: {self.title.value}\nText: {self.text.value}"
         else:
             return f"Title: {self.title.value}"
+
