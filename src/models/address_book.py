@@ -4,23 +4,22 @@ from datetime import timedelta, datetime
 
 class AddressBook(UserDict):
 
-     def add_record(self, record):
+    def add_record(self, record):
         self.data[record.name.value] = record
 
-     def find(self, name):
-         return self.data[name]
+    def find(self, value):
+        return self.data.get(value, "Contact not found")
      
-     def delete(self, name):
-         del self.data[name]
+    def delete(self, name):
+        del self.data[name]
 
-     def get_birthdays_per_week(self):
+    def get_birthdays_per_week(self):
         birthdays_per_week = defaultdict(list)
         today = datetime.today()
 
         for record in self.values():
             if record.birthday is not None:
                 birthday_this_year = datetime.strptime(record.birthday.value, '%d.%m.%Y').replace(year=today.year)
-            
 
                 if birthday_this_year < today:
                     birthday_this_year = birthday_this_year.replace(year=today.year + 1)

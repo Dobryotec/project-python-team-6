@@ -1,4 +1,6 @@
+from src.exceptions import PhoneException, DateFormatException
 from src.models.record import Record
+
 
 def input_error(func):
     def inner(*args, **kwargs):
@@ -8,23 +10,32 @@ def input_error(func):
             return str(ve)
         except KeyError as ke:
             return str(ke)
+        except PhoneException:
+            return "Phone number must contain 10 digits"
+        except DateFormatException:
+            return "Following date format required: DD.MM.YYYY"
     return inner
+
 
 def parse_input(user_input):
     command, *args = user_input.split()
     command = command.strip().lower()
     return command, *args
 
+
 @input_error
-def add_contact(args, address_book):
+def add_contact(args, book):
     name, phone = args
-    if name not in address_book.data:
+    record = book.find(name)
+    if record != 'Contact not found':
+        record.add_phone(phone)
+    else:
         record = Record(name)
         record.add_phone(phone)
-        address_book.add_record(record)
-        return "Contact added"
-    else:
-        raise KeyError(f"Contact with name {name} already exists")
+        book.add_record(record)
+
+    return "Contact added."
+
 
 @input_error
 def change_contact(args, address_book):
@@ -35,6 +46,7 @@ def change_contact(args, address_book):
     else:
         raise KeyError(f"Contact with name {name} doesn't exist yet")
 
+
 @input_error
 def show_phone(args, address_book):
     name = args[0]
@@ -44,6 +56,7 @@ def show_phone(args, address_book):
     else:
         raise KeyError(f"Contact with name {name} doesn't exist yet")
 
+
 @input_error
 def show_all_contacts(address_book):
     if address_book.values():
@@ -51,6 +64,7 @@ def show_all_contacts(address_book):
             print(f'{record}')
     else:
         return "You don't have any contacts yet"
+
 
 @input_error
 def add_birthday(args, address_book):
@@ -69,6 +83,7 @@ def show_birthday(args, address_book):
         return f"Birthday of {name}: {address_book[name].birthday}"
     else:
         raise KeyError(f"Contact with {name} doesn't exist or birthday not set")
+
 
 @input_error
 def birthdays(address_book):
