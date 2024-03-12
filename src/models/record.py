@@ -6,6 +6,7 @@ class Record:
         self.name = Name(name)
         self.phones = []  
         self.birthday = None
+        self.address = None
 
     def add_phone(self, phone):
         phone_obj = Phone(phone)
@@ -33,6 +34,11 @@ class Record:
         birthday_obj = Birthday(birthday)      
         birthday_obj.validate_date()
         self.birthday = birthday_obj
+
+    def add_address(self, address):
+        address = Address(address)
+        address.validate_address()
+        self.address = address
 
     def __str__(self):
         phones_info = '; '.join(p.value for p in self.phones)

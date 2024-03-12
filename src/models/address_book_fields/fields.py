@@ -28,6 +28,15 @@ class Birthday(Field):
         except ValueError:
             raise DateFormatException
 
+
+class Address(Field):
+    def validate_address(self):
+        if len(self.value) < 10:
+            raise ValueError("The address must contain more then 10 characters")
+        if str(self.value).isdigit():
+            raise ValueError("The address must contain more than just numbers")
+
+
 class Day(Field):
     def validate_day(prompt):
         while True:

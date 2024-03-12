@@ -3,7 +3,6 @@ from src.models.record import Record
 from src.models.address_book_fields.fields import Day
 
 
-
 def input_error(func):
     def inner(*args, **kwargs):
         try:
@@ -16,6 +15,7 @@ def input_error(func):
             return "Phone number must contain 10 digits"
         except DateFormatException:
             return "Following date format required: DD.MM.YYYY"
+
     return inner
 
 
@@ -60,6 +60,16 @@ def show_phone(args, address_book):
 
 
 @input_error
+def show_address(args, address_book):
+    name = args[0]
+    if name in address_book:
+        record = address_book[name]
+        return f"Address of {name}: {record.address.value}"
+    else:
+        raise KeyError(f"Contact with name {name} doesn't exist yet")
+
+
+@input_error
 def show_all_contacts(address_book):
     if address_book.values():
         for record in address_book.values():
@@ -74,6 +84,16 @@ def add_birthday(args, address_book):
     if name in address_book:
         address_book[name].add_birthday(birthday)
         return f"Birthday added for {name}"
+    else:
+        raise KeyError(f"Contact with {name} doesn't exist")
+
+
+@input_error
+def add_address(args, address_book):
+    name, address = args
+    if name in address_book:
+        address_book[name].add_address(address)
+        return f"Address added for {name}"
     else:
         raise KeyError(f"Contact with {name} doesn't exist")
 
