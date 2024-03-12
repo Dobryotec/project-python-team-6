@@ -1,9 +1,30 @@
 import pickle
 from collections import UserDict, defaultdict
 from datetime import datetime
-
+from src.models.notes import *
 
 class AddressBook(UserDict):
+    def __init__(self):
+        super().__init__()
+        self.notes = []
+
+    def add_note(self, title, text=None):
+        note = Note(title, text)
+        self.notes.append(note)
+
+    def delete_note_by_title(self, title):
+        for note in self.notes:
+            if note.title == title:
+                self.notes.remove(note)
+                return f"Note '{title}' deleted."
+        return f"Note '{title}' not found."
+
+    def find_note_by_title(self, title):
+        for note in self.notes:
+            if note.title == title:
+                return note
+        return f"Note '{title}' not found."
+    
     def save_to_file(self, filename):
         with open(filename, "wb") as file:
             pickle.dump(self.data, file)
