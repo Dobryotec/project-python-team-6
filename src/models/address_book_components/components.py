@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from src.exceptions import DateFormatException
+from src.exceptions import DateFormatException, PhoneException
 
 
 class Field:
@@ -17,10 +17,8 @@ class Name(Field):
 
 class Phone(Field):
     def validate_phone(self):
-        if len(self.value) == 10:
-            return self.value
-        else:
-            raise ValueError("Phone number must be exactly 10 digits")   
+        if not (len(self.value) == 10 and str(self.value).isdigit()):
+            raise PhoneException
 
 
 class Birthday(Field):
