@@ -41,6 +41,8 @@ def main():
             print(show_email(args, book))
         elif command == "change-email":
             print(change_email(args, book))
+        elif command == "find-contact":
+            print(find_contact(args, book))
         else:
             print("Invalid command")
 
