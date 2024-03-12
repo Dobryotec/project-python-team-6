@@ -2,7 +2,6 @@ from src.models.address_book import AddressBook
 from src.bot_commands import *
 
 
-
 def main():
     book = AddressBook()
     print("Welcome to the assistant bot!")
@@ -33,6 +32,7 @@ def main():
             print(birthdays(book))                     
         else:
             print("Invalid command")
+
 
 if __name__ == "__main__":
     main()   
