@@ -27,3 +27,15 @@ class Birthday(Field):
             datetime.strptime(self.value, "%d.%m.%Y").strftime("%d.%m.%Y")
         except ValueError:
             raise DateFormatException
+
+class Day(Field):
+    def validate_day(prompt):
+        while True:
+          try:
+            value = int(input(prompt))
+            if value <= 0:
+                print("Days must be a positive number.")
+            else:
+                return value
+          except ValueError:
+            print("Days must be a number.")
