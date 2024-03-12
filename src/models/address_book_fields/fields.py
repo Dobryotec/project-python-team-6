@@ -1,5 +1,5 @@
+import re
 from datetime import datetime
-
 from src.exceptions import DateFormatException, PhoneException
 
 
@@ -35,6 +35,12 @@ class Address(Field):
             raise ValueError("The address must contain more then 10 characters")
         if str(self.value).isdigit():
             raise ValueError("The address must contain more than just numbers")
+        
+
+class Email(Field):
+    def validate_email(self):
+        if not re.match(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", self.value):
+            raise ValueError("Invalid email format")
 
 
 class Day(Field):
