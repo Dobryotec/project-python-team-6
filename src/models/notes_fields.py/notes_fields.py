@@ -13,3 +13,4 @@ class Text(Field):
 
     def validate(self):
         super().validate()
+        
