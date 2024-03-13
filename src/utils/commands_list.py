@@ -1,5 +1,5 @@
 
-from utils.commands_list import *
+from src.bot_commands import *
 
 commands_l = {
     "help": {
