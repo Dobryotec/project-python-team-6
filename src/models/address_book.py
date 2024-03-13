@@ -3,6 +3,7 @@ from collections import UserDict, defaultdict
 from datetime import datetime
 from src.models.notes import *
 
+
 class AddressBook(UserDict):
     def __init__(self):
         super().__init__()
@@ -14,14 +15,14 @@ class AddressBook(UserDict):
 
     def delete_note_by_title(self, title):
         for note in self.notes:
-            if note.title == title:
+            if note.title.value == title:
                 self.notes.remove(note)
                 return f"Note '{title}' deleted."
         return f"Note '{title}' not found."
 
     def find_note_by_title(self, title):
         for note in self.notes:
-            if note.title == title:
+            if note.title.value == title:
                 return str(note)
         return f"Note '{title}' not found."
     

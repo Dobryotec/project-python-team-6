@@ -1,6 +1,6 @@
 from datetime import datetime
 from src.exceptions import DateFormatException, PhoneException
-from src.models.notes_fields import Title, Text
+
 
 class Field:
     def __init__(self, value, required=False, max_length=None):
@@ -17,7 +17,6 @@ class Field:
 
     def __str__(self):
         return str(self.value)
-
 
 
 class Name(Field):
@@ -64,4 +63,3 @@ class Day(Field):
         except ValueError:
             print("Days must be a number.")
             return None  
-            

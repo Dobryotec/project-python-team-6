@@ -1,6 +1,5 @@
 from src.models.address_book import AddressBook
 from src.bot_commands import *
-from src.models.notes import *
 
 
 def main():
@@ -45,17 +44,18 @@ def main():
         elif command == "find-contact":
             print(find_contact(args, book))
         elif command == "add-note":
-            print(add_note(args, book))
+            print(add_note(book))
         elif command == "delete-note":
             print(delete_note(args, book))
         elif command == "find-note":
-            print(find_note_by_title(args, book))
+            print(find_note(args, book))
         
         else:
             print("Invalid command")
             
-     # При виході з програми зберігаємо дані у файл ???
+    # При виході з програми зберігаємо дані у файл
     book.save_to_file("addressbook.pkl")
-    
+
+
 if __name__ == "__main__":
     main()
