@@ -54,27 +54,6 @@ def find_contact(args, address_book):
     value = args[0]
     return address_book.find(value)
 
-@input_error
-def add_note(address_book):
-    while True:
-        title = input('Enter title: ')
-        text = input('Enter text: ')
-        tags = input('Enter tags separated by coma: ')
-        address_book.add_note(title, text, tags)
-        return f"Note with '{title}' added"
-
-
-@input_error
-def find_note_by_title(args, address_book):
-    title = args[0]
-    return address_book.find_note_by_title(title)
-
-
-@input_error
-def find_note_by_tag(args, address_book):
-    tag = args[0]
-    return address_book.find_note_by_tag(tag)
-
 
 @input_error
 def change_contact(args, address_book):
