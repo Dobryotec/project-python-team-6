@@ -19,13 +19,11 @@ def main():
         command, *args = parse_input(user_input)
 
         if command in ["close", "exit"]:
-            
-            response ="Good bye!"
-
+            response = "Good bye!"
             show_message_dialog('Assistant Bot Response', response)
-            
             book.save_to_file("addressbook.pkl")
             break
+
         elif command == "help":
             response = help_me()
         elif command == "hello":
@@ -64,10 +62,15 @@ def main():
             response = delete_note(args, book)
         elif command == "find-note":
             response = find_note(args, book)
+        elif command == "find-by-tag":
+            response = find_note_by_tag(args, book)
         else:
             response = "Invalid command"
         
         show_message_dialog('Assistant Bot Response', response)
+
+    # При виході з програми зберігаємо дані у файл
+    book.save_to_file("addressbook.pkl")
 
 
 if __name__ == "__main__":

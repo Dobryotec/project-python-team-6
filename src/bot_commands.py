@@ -16,6 +16,8 @@ def input_error(func):
             return str(ve)
         except KeyError as ke:
             return str(ke)
+        except IndexError:
+            return "Enter value"
         except PhoneException:
             return "Phone number must contain 10 digits"
         except DateFormatException:
@@ -185,7 +187,8 @@ def birthdays(book):
 def add_note(address_book):
     title = input("Enter title: ")
     text = input("Enter text (optional): ")
-    address_book.add_note(title, text)
+    tags = input('Enter tags separated by coma (optional): ')
+    address_book.add_note(title, text, tags)
     return f"Note with '{title}' added."
 
 
@@ -198,11 +201,13 @@ def delete_note(args, address_book):
 @input_error
 def find_note(args, address_book):
     title = args[0]
-    note = address_book.find_note_by_title(title)
-    if note:
-        return str(note)
-    else:
-        return f"Note '{title}' not found."
+    return address_book.find_note_by_title(title)
+
+
+@input_error
+def find_note_by_tag(args, address_book):
+    tag = args[0]
+    return address_book.find_note_by_tag(tag)
 
 
 def help_me():
