@@ -4,8 +4,6 @@ from src.utils.show_message_dialog import show_message_dialog
 from src.utils.show_input_dialog import show_input_dialog
 
 
-
-
 def main():
     book = AddressBook()
     book.load_from_file("addressbook.pkl")
@@ -14,7 +12,6 @@ def main():
 
     while True:
         user_input = show_input_dialog('Enter a command', 'Please enter your command:')
-        
 
         if user_input is None: 
             break
@@ -59,10 +56,17 @@ def main():
             response = change_email(args, book)
         elif command == "find-contact":
             response = find_contact(args, book)
+        elif command == "add-note":
+            response = add_note(book)
+        elif command == "delete-note":
+            response = delete_note(args, book)
+        elif command == "find-note":
+            response = find_note(args, book)
         else:
             response = "Invalid command"
         
         show_message_dialog('Assistant Bot Response', response)
+
 
 if __name__ == "__main__":
     main()
