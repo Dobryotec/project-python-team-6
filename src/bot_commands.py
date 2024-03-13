@@ -148,7 +148,7 @@ def show_birthday(args, address_book):
 
 @input_error
 def birthdays(book):
-     while True:
+    while True:
         value = input("Enter number of days: ")
         day = Day(value)
         validated_day = day.validate_day()
