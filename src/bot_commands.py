@@ -26,6 +26,7 @@ def input_error(func):
     return inner
 
 
+@input_error
 def parse_input(user_input):
     command, *args = user_input.split()
     command = command.strip().lower()
