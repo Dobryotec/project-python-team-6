@@ -1,6 +1,8 @@
 from src.exceptions import PhoneException, DateFormatException
 from src.models.record import Record
 from src.models.address_book_fields.fields import Day
+from tabulate import tabulate
+from src.utils.commands_list import commands_l
 
 
 def input_error(func):
@@ -161,3 +163,21 @@ def birthdays(book):
                 return output
             else:
                 return "No upcoming birthdays"
+
+@input_error
+def help():
+    print("\033[94m", "Available commands:", "\033[0m")
+    command_d = dict(sorted(commands_l.items()))
+
+    hlp_tbl_headers = [
+        "Command",
+        "Example",
+    ]
+    hlp_tbl = [
+        [
+            command,
+            info["example"],
+        ]
+        for command, info in command_d.items()
+    ]
+    return tabulate(hlp_tbl, hlp_tbl_headers, tablefmt="rounded_grid")
