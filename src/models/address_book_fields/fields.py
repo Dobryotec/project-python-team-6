@@ -46,12 +46,12 @@ class Email(Field):
 class Day(Field):
     def validate_day(self):
         try:
-          value = int(self.value)
-          if value <= 0:
-            print("Days must be a positive number.")
-            return None
-          else:
-            return value
+            value = int(self.value)
+            if value <= 0:
+                print("Days must be a positive number.")
+                return None
+            else:
+                return value
         except ValueError:
             print("Days must be a number.")
             return None  
