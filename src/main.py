@@ -59,6 +59,8 @@ def main():
             response = change_email(args, book)
         elif command == "find-contact":
             response = find_contact(args, book)
+        elif command == "delete-contact":
+            response = delete_contact(args, book)    
         else:
             response = "Invalid command"
         

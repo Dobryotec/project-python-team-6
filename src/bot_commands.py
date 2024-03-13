@@ -65,6 +65,16 @@ def change_contact(args, address_book):
 
 
 @input_error
+def delete_contact(args, address_book):
+    name = args[0]
+    if name in address_book:
+        address_book.delete(name)
+        return f"Contact '{name}' deleted successfully"
+    else:
+        raise KeyError(f"Contact with name {name} doesn't exist")
+    
+
+@input_error
 def add_email(args, address_book):
     name, email = args
     if name in address_book:
