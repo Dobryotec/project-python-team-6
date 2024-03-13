@@ -1,22 +1,41 @@
 import pickle
 from collections import UserDict, defaultdict
 from datetime import datetime
+from src.models.notes import *
 
 
 class AddressBook(UserDict):
+    def __init__(self):
+        super().__init__()
+        self.notes = []
+
+    def add_note(self, title, text=None):
+        note = Note(title, text)
+        self.notes.append(note)
+
+    def delete_note_by_title(self, title):
+        for note in self.notes:
+            if note.title.value == title:
+                self.notes.remove(note)
+                return f"Note '{title}' deleted."
+        return f"Note '{title}' not found."
+
+    def find_note_by_title(self, title):
+        for note in self.notes:
+            if note.title.value == title:
+                return str(note)
+        return f"Note '{title}' not found."
+    
     def save_to_file(self, filename):
         with open(filename, "wb") as file:
-            pickle.dump(self.data, file)
+            pickle.dump(self.notes, file)
 
     def load_from_file(self, filename):
         try:
             with open(filename, "rb") as file:
-                content = pickle.load(file)
-            for k, record in content.items():
-                self.add_record(record)
-
+                self.notes = pickle.load(file)
         except FileNotFoundError:
-            self.data = {}
+            self.notes = []
 
     def add_record(self, record):
         self.data[record.name.value] = record

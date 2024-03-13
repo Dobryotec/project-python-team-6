@@ -1,12 +1,11 @@
 from src.exceptions import PhoneException, DateFormatException
 from src.models.record import Record
 from src.models.address_book_fields.fields import Day
+
 from tabulate import tabulate
 from src.utils.commands_list import commands_l
 
 from src.utils.show_input_dialog import show_input_dialog
-
-
 
 
 def input_error(func):
@@ -171,7 +170,7 @@ def birthdays(book):
         value = show_input_dialog('Enter a command', "Enter number of days: ")
         day = Day(value)
         validated_day = day.validate_day()
-        if validated_day is not None: 
+        if validated_day is not None:
             birthdays_within_days = book.get_birthdays_within_days(validated_day)
             if birthdays_within_days:
                 output = ""
@@ -180,6 +179,30 @@ def birthdays(book):
                 return output
             else:
                 return "No upcoming birthdays"
+
+
+@input_error
+def add_note(address_book):
+    title = input("Enter title: ")
+    text = input("Enter text (optional): ")
+    address_book.add_note(title, text)
+    return f"Note with '{title}' added."
+
+
+@input_error
+def delete_note(args, address_book):
+    title = args[0]
+    return address_book.delete_note_by_title(title)
+
+
+@input_error
+def find_note(args, address_book):
+    title = args[0]
+    note = address_book.find_note_by_title(title)
+    if note:
+        return str(note)
+    else:
+        return f"Note '{title}' not found."
 
 
 def help_me():
