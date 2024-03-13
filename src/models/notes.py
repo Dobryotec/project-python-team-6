@@ -5,6 +5,7 @@ class Note:
     def __init__(self, title, text=None):
         self.title = Title(title)
         self.text = Text(text)
+        self.tags = []
 
     def __str__(self):
         if self.text:
@@ -12,3 +13,5 @@ class Note:
         else:
             return f"Title: {self.title.value}"
 
+    def add_tags(self, tags):
+        self.tags = [str(tag).strip() for tag in tags.split(',')]
