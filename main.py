@@ -14,7 +14,7 @@ def main():
 
         if command in ["close", "exit"]:
             print("Good bye!")
-            book.save_to_file("addressbook.pkl")
+            book.save_to_file("addressbook.pkl") 
             break
         elif command == "hello":
             print("How can I help you?")
@@ -53,7 +53,9 @@ def main():
         
         else:
             print("Invalid command")
-
-
+            
+     # При виході з програми зберігаємо дані у файл
+    book.save_to_file("addressbook.pkl")
+    
 if __name__ == "__main__":
     main()

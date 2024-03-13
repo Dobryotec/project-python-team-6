@@ -149,21 +149,6 @@ def show_birthday(args, address_book):
 
 @input_error
 def birthdays(book):
-<<<<<<< HEAD
-    while True:
-        value = input("Enter number of days: ")
-        day = Day(value)
-        validated_day = day.validate_day()
-        if validated_day is not None: 
-            birthdays_within_days = book.get_birthdays_within_days(validated_day)
-            if birthdays_within_days:
-                output = ""
-                for birthday_date, names in birthdays_within_days.items():
-                    output += f"{birthday_date.strftime('%A, %d %B')}: {', '.join(names)}\n"
-                return output
-            else:
-                return "No upcoming birthdays"
-=======
      days = Day.validate_day("Enter number of days: ")
 
      birthdays_within_days = book.get_birthdays_within_days(days)
@@ -182,4 +167,17 @@ def add_note(args, address_book):
     text = input("Enter text (optional): ")
     address_book.add_note(title, text)
     return "Note added."
->>>>>>> 0061802 (Changes after reviewing)
+
+@input_error
+def delete_note(args, address_book):
+    title = args[0]
+    return address_book.delete_note_by_title(title)
+
+@input_error
+def find_note(args, address_book):
+    title = args[0]
+    note = address_book.find_note_by_title(title)
+    if note:
+        return str(note)
+    else:
+        return f"Note '{title}' not found."

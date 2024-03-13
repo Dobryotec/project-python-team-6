@@ -27,17 +27,14 @@ class AddressBook(UserDict):
     
     def save_to_file(self, filename):
         with open(filename, "wb") as file:
-            pickle.dump(self.data, file)
+            pickle.dump(self.notes, file)
 
     def load_from_file(self, filename):
         try:
             with open(filename, "rb") as file:
-                content = pickle.load(file)
-            for k, record in content.items():
-                self.add_record(record)
-
+                self.notes = pickle.load(file)
         except FileNotFoundError:
-            self.data = {}
+            self.notes = []
 
     def add_record(self, record):
         self.data[record.name.value] = record
