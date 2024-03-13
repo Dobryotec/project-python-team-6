@@ -1,7 +1,11 @@
 from src.exceptions import PhoneException, DateFormatException
 from src.models.record import Record
 from src.models.address_book_fields.fields import Day
-from src.models.notes import Note
+
+from tabulate import tabulate
+from src.utils.commands_list import commands_l
+
+from src.utils.show_input_dialog import show_input_dialog
 
 
 def input_error(func):
@@ -111,11 +115,14 @@ def show_address(args, address_book):
 
 @input_error
 def show_all_contacts(address_book):
+    contacts_info = ""
     if address_book.values():
         for record in address_book.values():
-            print(f'{record}')
+            contacts_info += f'{record}\n' 
     else:
-        return "You don't have any contacts yet"
+        contacts_info = "You don't have any contacts yet"
+
+    return contacts_info 
 
 
 @input_error
@@ -150,7 +157,7 @@ def show_birthday(args, address_book):
 @input_error
 def birthdays(book):
     while True:
-        value = input("Enter number of days: ")
+        value = show_input_dialog('Enter a command', "Enter number of days: ")
         day = Day(value)
         validated_day = day.validate_day()
         if validated_day is not None:
@@ -186,3 +193,21 @@ def find_note(args, address_book):
         return str(note)
     else:
         return f"Note '{title}' not found."
+
+
+def help_me():
+    print("\033[94m", "Available commands:", "\033[0m")
+    command_d = dict(sorted(commands_l.items()))
+
+    hlp_tbl_headers = [
+        "Command",
+        "Example",
+    ]
+    hlp_tbl = [
+        [
+            command,
+            info["example"],
+        ]
+        for command, info in command_d.items()
+    ]
+    return tabulate(hlp_tbl, hlp_tbl_headers, tablefmt="rounded_grid")
