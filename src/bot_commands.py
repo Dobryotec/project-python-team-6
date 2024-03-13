@@ -4,6 +4,10 @@ from src.models.address_book_fields.fields import Day
 from tabulate import tabulate
 from src.utils.commands_list import commands_l
 
+from src.utils.show_input_dialog import show_input_dialog
+
+
+
 
 def input_error(func):
     def inner(*args, **kwargs):
@@ -112,11 +116,14 @@ def show_address(args, address_book):
 
 @input_error
 def show_all_contacts(address_book):
+    contacts_info = ""
     if address_book.values():
         for record in address_book.values():
-            print(f'{record}')
+            contacts_info += f'{record}\n' 
     else:
-        return "You don't have any contacts yet"
+        contacts_info = "You don't have any contacts yet"
+
+    return contacts_info 
 
 
 @input_error
@@ -151,7 +158,7 @@ def show_birthday(args, address_book):
 @input_error
 def birthdays(book):
     while True:
-        value = input("Enter number of days: ")
+        value = show_input_dialog('Enter a command', "Enter number of days: ")
         day = Day(value)
         validated_day = day.validate_day()
         if validated_day is not None: 
