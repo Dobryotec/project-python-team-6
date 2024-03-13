@@ -18,5 +18,5 @@ setup(name='personal_assistant_bot',
       license='MIT',
       packages=find_namespace_packages(),
       install_requires=[''],
-      entry_points={'console_scripts': ['bot_run = main:main']}
+      entry_points={'console_scripts': ['bot_run = src.main:main']}
       )
