@@ -1,9 +1,14 @@
-from src.models.address_book_fields.fields import *
+from src.models.notes_fields import Title, Text
 
 class Note:
     def __init__(self, title, text=None):
-        self.title = Field(title, required=True, max_length=50)
-        if text:
-            self.text = Field(text, max_length=500)
+        self.title = Title(title)
+        self.text = Text(text)
+
+    def __str__(self):
+        if self.text:
+            return f"Title: {self.title.value}\nText: {self.text.value}"
         else:
-            self.text = None
+            return f"Title: {self.title.value}"
+        
+  

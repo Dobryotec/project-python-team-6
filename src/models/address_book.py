@@ -22,7 +22,7 @@ class AddressBook(UserDict):
     def find_note_by_title(self, title):
         for note in self.notes:
             if note.title == title:
-                return note
+                return str(note)
         return f"Note '{title}' not found."
     
     def save_to_file(self, filename):

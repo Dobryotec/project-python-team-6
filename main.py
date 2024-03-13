@@ -50,6 +50,7 @@ def main():
             print(delete_note(args, book))
         elif command == "find-note":
             print(find_note_by_title(args, book))
+        
         else:
             print("Invalid command")
 

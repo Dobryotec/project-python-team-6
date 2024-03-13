@@ -1,6 +1,7 @@
 from src.exceptions import PhoneException, DateFormatException
 from src.models.record import Record
 from src.models.address_book_fields.fields import Day
+from src.models.notes import Note
 
 
 def input_error(func):
@@ -148,6 +149,7 @@ def show_birthday(args, address_book):
 
 @input_error
 def birthdays(book):
+<<<<<<< HEAD
     while True:
         value = input("Enter number of days: ")
         day = Day(value)
@@ -161,3 +163,23 @@ def birthdays(book):
                 return output
             else:
                 return "No upcoming birthdays"
+=======
+     days = Day.validate_day("Enter number of days: ")
+
+     birthdays_within_days = book.get_birthdays_within_days(days)
+
+     if birthdays_within_days:
+        output = ""
+        for birthday_date, names in birthdays_within_days.items():
+            output += f"{birthday_date.strftime('%A, %d %B')}: {', '.join(names)}\n"
+        return output
+     else:
+        return "No upcoming birthdays"
+    
+@input_error
+def add_note(args, address_book):
+    title = input("Enter title: ")
+    text = input("Enter text (optional): ")
+    address_book.add_note(title, text)
+    return "Note added."
+>>>>>>> 0061802 (Changes after reviewing)
