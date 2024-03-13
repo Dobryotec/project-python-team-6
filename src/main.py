@@ -16,7 +16,7 @@ def main():
             book.save_to_file("addressbook.pkl")
             break
         elif command == "help":
-            print(help())
+            print(help_me())
         elif command == "hello":
             print("How can I help you?")
         elif command == "add":

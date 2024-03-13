@@ -164,8 +164,8 @@ def birthdays(book):
             else:
                 return "No upcoming birthdays"
 
-@input_error
-def help():
+
+def help_me():
     print("\033[94m", "Available commands:", "\033[0m")
     command_d = dict(sorted(commands_l.items()))
 

@@ -17,6 +17,6 @@ setup(name='personal_assistant_bot',
       author_email='',
       license='MIT',
       packages=find_namespace_packages(),
-      install_requires=[''],
+      install_requires=['tabulate'],
       entry_points={'console_scripts': ['bot_run = src.main:main']}
       )
