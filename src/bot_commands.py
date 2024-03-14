@@ -7,6 +7,8 @@ from src.utils.commands_list import commands_l
 
 from src.utils.show_input_dialog import show_input_dialog
 
+DEFAULT_INPUT_MESSAGE = 'Enter a command'
+
 
 def input_error(func):
     def inner(*args, **kwargs):
@@ -170,7 +172,7 @@ def show_birthday(args, address_book):
 @input_error
 def birthdays(book):
     while True:
-        value = show_input_dialog('Enter a command', "Enter number of days: ")
+        value = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Enter number of days: ")
         day = Day(value)
         validated_day = day.validate_day()
         if validated_day is not None:
@@ -186,9 +188,9 @@ def birthdays(book):
 
 @input_error
 def add_note(address_book):
-    title = input("Enter title: ")
-    text = input("Enter text (optional): ")
-    tags = input('Enter tags separated by coma (optional): ')
+    title = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Enter title: ")
+    text = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Enter text (optional): ")
+    tags = show_input_dialog(DEFAULT_INPUT_MESSAGE, 'Enter tags separated by coma (optional): ')
     address_book.add_note(title, text, tags)
     return f"Note with '{title}' added."
 
