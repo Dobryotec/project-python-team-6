@@ -1,13 +1,15 @@
+from models.notes import Notes
 from src.models.address_book import AddressBook
 from src.bot_commands import *
 from src.utils.show_message_dialog import show_message_dialog
 from src.utils.show_input_dialog import show_input_dialog
+from utils.files_methods import load_from_file, save_to_file
 
 
 def main():
     book = AddressBook()
-    book.load_from_file("addressbook.pkl")
-    
+    notes = Notes()
+    load_from_file("data.pkl", book, notes)
     show_message_dialog('Assistant Bot', "Welcome to the assistant bot!")
 
     while True:
@@ -21,20 +23,21 @@ def main():
         if command in ["close", "exit"]:
             response = "Good bye!"
             show_message_dialog('Assistant Bot Response', response)
-            book.save_to_file("addressbook.pkl")
+            # book.save_to_file("addressbook.pkl")
+            save_to_file("data.pkl", book.data, notes.notes)
             break
 
         elif command == "help":
             response = help_me()
         elif command == "hello":
             response = "How can I help you?"
-        elif command == "add":
+        elif command == "add-contact":
             response = add_contact(args, book)
-        elif command == "change":
+        elif command == "change-phone":
             response = change_contact(args, book)
-        elif command == "phone":
+        elif command == "show-phone":
             response = show_phone(args, book)
-        elif command == "all":
+        elif command == "all-contacts":
             response = show_all_contacts(book)
         elif command == "add-birthday":
             response = add_birthday(args, book)
@@ -57,20 +60,20 @@ def main():
         elif command == "delete-contact":
             response = delete_contact(args, book)    
         elif command == "add-note":
-            response = add_note(book)
+            response = add_note(notes)
         elif command == "delete-note":
-            response = delete_note(args, book)
+            response = delete_note(args, notes)
         elif command == "find-note":
-            response = find_note(args, book)
-        elif command == "find-by-tag":
-            response = find_note_by_tag(args, book)
+            response = find_note(args, notes)
+        elif command == "find-note-by-tag":
+            response = find_note_by_tag(args, notes)
         else:
             response = "Invalid command"
         
         show_message_dialog('Assistant Bot Response', response)
 
     # При виході з програми зберігаємо дані у файл
-    book.save_to_file("addressbook.pkl")
+    save_to_file("data.pkl", book.data, notes.notes)
 
 
 if __name__ == "__main__":
