@@ -212,11 +212,13 @@ def help_me():
     hlp_tbl_headers = [
         "Command",
         "Example",
+        "Description"
     ]
     hlp_tbl = [
         [
             command,
             info["example"],
+            info["description"]
         ]
         for command, info in command_d.items()
     ]
