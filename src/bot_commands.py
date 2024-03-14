@@ -105,8 +105,7 @@ def show_email(args, address_book):
         return f"Email of {name}: {address_book[name].email.value}"
     else:
         raise KeyError(f"Contact with {name} doesn't exist or email not set")
-    
-    
+
 
 @input_error
 def show_phone(args, address_book):
@@ -187,24 +186,24 @@ def birthdays(book):
 
 
 @input_error
-def add_note(address_book):
+def add_note(notes):
     title = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Enter title: ")
     text = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Enter text (optional): ")
     tags = show_input_dialog(DEFAULT_INPUT_MESSAGE, 'Enter tags separated by coma (optional): ')
-    address_book.add_note(title, text, tags)
-    return f"Note with '{title}' added."
+    notes.add_note(title, text, tags)
+    return f"Note with tile: '{title}' added."
 
 
 @input_error
-def delete_note(args, address_book):
+def delete_note(args, notes):
     title = args[0]
-    return address_book.delete_note_by_title(title)
+    return notes.delete_note_by_title(title)
 
 
 @input_error
-def find_note(args, address_book):
+def find_note(args, notes):
     title = args[0]
-    return address_book.find_note_by_title(title)
+    return notes.find_note_by_title(title)
 
 
 @input_error
