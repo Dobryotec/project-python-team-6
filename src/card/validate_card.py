@@ -16,10 +16,11 @@ class Card:
     def get_valid_input(self, prompt, error_message, length): 
         while True:
             user_input = show_input_dialog(prompt, error_message)
-            if len(user_input) == length and user_input.isdigit():
+            if user_input and len(user_input) == length and user_input.isdigit():
                 return user_input
             else:
                 show_message_dialog('Error', f"Будь ласка, введіть коректне значення. Має бути {length}-значне число.")
+
 
 if __name__ == "__main__":
     card = Card()

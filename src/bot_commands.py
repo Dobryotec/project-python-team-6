@@ -14,8 +14,8 @@ def input_error(func):
     def inner(*args, **kwargs):
         try:
             return func(*args, **kwargs)
-        except ValueError as ve:
-            return str(ve)
+        except ValueError:
+            return "Введіть корректні дані."
         except KeyError as ke:
             return str(ke)
         except IndexError:
