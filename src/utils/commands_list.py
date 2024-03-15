@@ -32,7 +32,7 @@ commands_l = {
     },
     "add-address": {
         "description": "Add a physical address to a contact.",
-        "example": "add-address 'John Doe' 'address here'",
+        "example": "add-address 'John' 'address here'",
     },
     "show-address": {
         "description": "Show the address of a contact.",
@@ -60,14 +60,22 @@ commands_l = {
     },
     "add-note": {
         "description": "Add a note to a contact.",
-        "example": "add-note 'John'",
+        "example": "add-note",
+    },
+    "find-note": {
+        "description": "Find a note by title.",
+        "example": "find-note 'note'",
+    },
+    "find-note-by-tag": {
+        "description": "Find a note by tag.",
+        "example": "find-note-by-tag 'John' 'tag'",
     },
     "update-note-by-title": {
         "description": "Update a note for a contact.",
-        "example": "update-note-by-title 'John'",
+        "example": "update-note-by-title 'title'",
     },
     "delete-note": {
         "description": "Delete a note for a contact.",
-        "example": "delete-note 'John'",
+        "example": "delete-note 'note'",
     },
 }
