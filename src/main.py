@@ -1,3 +1,4 @@
+from introduction_dialogs import introduction, last_donation_dialog
 from models.notes import Notes
 from src.models.address_book import AddressBook
 from src.bot_commands import *
@@ -10,20 +11,16 @@ def main():
     book = AddressBook()
     notes = Notes()
     load_from_file("data.pkl", book, notes)
-    show_message_dialog('Assistant Bot', "Welcome to the assistant bot!")
+    user_name = introduction()
 
     while True:
-        user_input = show_input_dialog('Enter a command', 'Please enter your command:')
-
-        if user_input is None: 
+        user_input = show_input_dialog(f"How can I assist you, {user_name}?", 'Будь ласка, введіть вашу команду:')
+        if user_input is None:
             break
 
         command, *args = parse_input(user_input)
-
         if command in ["close", "exit"]:
-            response = "Good bye!"
-            show_message_dialog('Assistant Bot Response', response)
-            # book.save_to_file("addressbook.pkl")
+            last_donation_dialog()
             save_to_file("data.pkl", book.data, notes.notes)
             break
 
@@ -58,7 +55,7 @@ def main():
         elif command == "find-contact":
             response = find_contact(args, book)
         elif command == "delete-contact":
-            response = delete_contact(args, book)    
+            response = delete_contact(args, book)
         elif command == "add-note":
             response = add_note(notes)
         elif command == "delete-note":
@@ -68,9 +65,9 @@ def main():
         elif command == "find-note-by-tag":
             response = find_note_by_tag(args, notes)
         else:
-            response = "Invalid command"
-        
-        show_message_dialog('Assistant Bot Response', response)
+            response = "Некоректна команда. Щоб переглянути перелік команд, введіть 'help'"
+
+        show_message_dialog('Personal Assistant Diia', response)
 
     # При виході з програми зберігаємо дані у файл
     save_to_file("data.pkl", book.data, notes.notes)
