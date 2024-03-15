@@ -5,11 +5,12 @@ from src.utils.files_methods import load_name_from_file, save_name_to_file
 
 PERSONAL_ASSISTANT_TITLE = 'Personal Assistant Diia'
 VALID_CHOICE = ['1', '2']
+exiting_user = load_name_from_file() != None
 
 
 def greeting_dialog():
     show_message_dialog(PERSONAL_ASSISTANT_TITLE, "Bac вітає Особистий помічник Дія!")
-    if load_name_from_file() != None:
+    if exiting_user:
         user_name = load_name_from_file()
         return user_name
     else:
@@ -93,8 +94,9 @@ def donation_dialog():
 
 def introduction():
     user_name = greeting_dialog()
-    chose_version_dialog(user_name)
-    fill_card_data()
+    if not exiting_user:
+        chose_version_dialog(user_name)
+        fill_card_data()
     donation_dialog()
     return user_name
 
@@ -107,7 +109,7 @@ def last_donation_dialog():
     )
 
     if donation_response == '1':
-        show_message_dialog(PERSONAL_ASSISTANT_TITLE, "Дякуємо, що обрали наш бот i за внесок до перемоги!")
+        show_message_dialog(PERSONAL_ASSISTANT_TITLE, "Дякуємо, що обрали наш бот i за Ваш °внесок до перемоги!")
 
     if donation_response == '2':
         show_message_dialog(

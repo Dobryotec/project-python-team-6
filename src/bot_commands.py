@@ -221,7 +221,6 @@ def update_note_by_title(notes):
 
 
 def help():
-    print("\033[94m", "Доступні команди:", "\033[0m")
     command_d = dict(sorted(commands_l.items()))
 
     hlp_tbl_headers = [
@@ -237,4 +236,4 @@ def help():
         ]
         for command, info in command_d.items()
     ]
-    return tabulate(hlp_tbl, hlp_tbl_headers, tablefmt="rounded_grid")
+    return tabulate(hlp_tbl, hlp_tbl_headers, tablefmt="rounded_grid", stralign='left')
