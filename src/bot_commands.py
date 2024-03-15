@@ -220,7 +220,7 @@ def update_note_by_title(notes):
     return f"Note with tile: '{title}' updated."
 
 
-def help_me():
+def help():
     print("\033[94m", "Доступні команди:", "\033[0m")
     command_d = dict(sorted(commands_l.items()))
 
