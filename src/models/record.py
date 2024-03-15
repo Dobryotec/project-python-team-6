@@ -54,11 +54,11 @@ class Record:
     def __str__(self):
         phones_info = '; '.join(p.value for p in self.phones)
         if self.birthday is not None:
-            birthday_info = f", birthday: {self.birthday.value}"
+            birthday_info = f", день народження: {self.birthday.value}"
         else:
             birthday_info = "" 
         if self.email is not None:
             email_info = f", email: {self.email.value}"
         else:
             email_info = ""
-        return f"Contact name: {self.name.value}, phones: {phones_info}{birthday_info}{email_info}" 
+        return f"Ім'я контакту: {self.name.value}, номер телефону: {phones_info}{birthday_info}{email_info}" 

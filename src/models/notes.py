@@ -9,9 +9,9 @@ class Note:
 
     def __str__(self):
         if self.text:
-            return f"Title: {self.title.value}\nText: {self.text.value}"
+            return f"Заголовок: {self.title.value}\nТекст: {self.text.value}"
         else:
-            return f"Title: {self.title.value}"
+            return f"Заголовок: {self.title.value}"
 
     def add_tags(self, tags):
         self.tags = [str(tag).strip() for tag in tags.split(',')]
@@ -31,14 +31,14 @@ class Notes:
         for note in self.notes:
             if note.title.value == title:
                 self.notes.remove(note)
-                return f"Note '{title}' deleted."
-        return f"Note '{title}' not found."
+                return f"Примітку '{title}' видалено."
+        return f"Примітку '{title}' не знайдено."
 
     def find_note_by_title(self, title):
         for note in self.notes:
             if note.title.value == title:
                 return str(note)
-        return f"Note '{title}' not found."
+        return f"Примітку '{title}' не знайдено."
 
     def find_note_by_tag(self, tag):
         notes = []

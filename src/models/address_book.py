@@ -11,7 +11,7 @@ class AddressBook(UserDict):
             if value == name or value == record.email.value:
                 return record
             else:
-                return "Contact not found"
+                return "Контакт не знайдено."
 
     def delete(self, name):
         del self.data[name]
