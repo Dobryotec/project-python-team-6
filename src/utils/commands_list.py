@@ -2,21 +2,17 @@ from src.bot_commands import *
 
 
 commands_l = {
-    "help": {
-        "description": "Show available commands and their usage examples.",
-        "example": None,
-    },
-    "hello": {
-        "description": "Greet the user.",
-        "example": None,
-    },
-    "close": {
-        "description": "Close the program.",
-        "example": None,
-    },
     "add-contact": {
         "description": "Add a new contact with a name and phone number.",
-        "example": "add-contact 'John Doe' '0501234455'",
+        "example": "add-contact 'John' '0501234455'",
+    },
+    "change-phone": {
+        "description": "Change the phone number for a contact.",
+        "example": "change-phone 'John' '0501234455'",
+    },
+    "all_contacts": {
+        "description": "Show all contacts.",
+        "example": "all-contacts",
     },
     "show-phone": {
         "description": "Show all phone numbers for a contact.",
@@ -30,17 +26,33 @@ commands_l = {
         "description": "Show the birthday of a contact.",
         "example": "show-birthday 'John'",
     },
-    "show-birthdays": {
+    "birthdays": {
         "description": "Show upcoming birthdays.",
-        "example": "show-birthdays",
+        "example": "birthdays",
     },
     "add-address": {
         "description": "Add a physical address to a contact.",
         "example": "add-address 'John Doe' 'address here'",
     },
+    "show-address": {
+        "description": "Show the address of a contact.",
+        "example": "show-address 'John'",
+    },
     "add-email": {
         "description": "Add an email address to a contact.",
-        "example": "add-email 'John Doe' 'john@doe.com'",
+        "example": "add-email 'John' 'john@doe.com'",
+    },
+    "show-email": {
+        "description": "Show the email of a contact.",
+        "example": "show-email 'John'",
+    },
+    "change-email": {
+        "description": "Change the email address of a contact.",
+        "example": "change-email 'John' 'new email'",
+    },
+    "find-contact": {
+        "description": "Find a contact by name or email.",
+        "example": "find-contact 'John'",
     },
     "delete-contact": {
         "description": "Delete a contact.",
