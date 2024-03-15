@@ -212,9 +212,12 @@ def find_note_by_tag(args, address_book):
     return address_book.find_note_by_tag(tag)
 
 @input_error
-def update_note_by_title(args, notes):
-    title, new_title, new_text = args
-    return notes.update_note_by_title(title, new_title, new_text)
+def update_note_by_title(notes):
+    title = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Enter title: ")
+    text = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Enter new text (optional): ")
+    tags = show_input_dialog(DEFAULT_INPUT_MESSAGE, 'Enter new tags separated by coma (optional): ')
+    notes.update_note_by_title(title, text, tags)
+    return f"Note with tile: '{title}' updated."
 
 
 def help_me():
