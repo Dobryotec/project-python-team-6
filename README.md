@@ -7,7 +7,7 @@
 
 
 ## Перед початком користування 
-`git clone https://github.com/Dobryotec/project-python-team-6.git.`  
+`git clone https://github.com/Dobryotec/project-python-team-6.git`  
 `pip install .`  
 Перейдіть в термінал та запустіть комманду `bot_run`
 
