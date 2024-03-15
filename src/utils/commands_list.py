@@ -8,7 +8,7 @@ commands_l = {
     },
     "change-phone": {
         "description": "Change the phone number for a contact.",
-        "example": "change-phone 'John' '0501234455'",
+        "example": "change-phone 'John' 'old phone' 'new phone",
     },
     "all_contacts": {
         "description": "Show all contacts.",
