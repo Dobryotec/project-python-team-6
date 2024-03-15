@@ -217,13 +217,15 @@ def help_me():
     command_d = dict(sorted(commands_l.items()))
 
     hlp_tbl_headers = [
-        "Команда",
-        "Приклад",
+        "Command",
+        "Example",
+        "Description"
     ]
     hlp_tbl = [
         [
             command,
             info["example"],
+            info["description"]
         ]
         for command, info in command_d.items()
     ]

@@ -1,128 +1,124 @@
-
 from src.bot_commands import *
 
 commands_l = {
     "help": {
-        "function": "help",
+        "description": "Show available commands and their usage examples.",
         "example": None,
     },
     "hello": {
-        "function": None,
+        "description": "Greet the user.",
         "example": None,
     },
     "exit": {
-        "function": None,
+        "description": "Exit the program.",
         "example": None,
     },
     "close": {
-        "function": None,
+        "description": "Close the program.",
         "example": None,
     },
     "all": {
-        "function": "show_all",
+        "description": "Show all contacts.",
         "example": None,
     },
     "add-contact": {
-        "function": "add_contact",
+        "description": "Add a new contact with a name and phone number.",
         "example": "add-contact 'John Doe' '0501234455'",
     },
     "find": {
-        "function": "find_contact",
+        "description": "Find a contact by name or phone number.",
         "example": "find 'John' | find 1231234444",
     },
     "add-phone": {
-        "function": "add_phone",
+        "description": "Add a phone number to an existing contact.",
         "example": "add-phone 'John Doe' '0501234455'",
     },
     "edit-phone": {
-        "function": "edit_phone",
+        "description": "Edit an existing phone number for a contact.",
         "example": "edit-phone 'John Doe' '0501234455' '0501234355'",
     },
     "delete-phone": {
-        "function": "delete_phone",
+        "description": "Delete a phone number from a contact.",
         "example": "delete-phone 'John Doe' '0501234455'",
     },
     "show-phone": {
-        "function": "show_phones",
+        "description": "Show all phone numbers for a contact.",
         "example": "show-phone 'name'",
     },
     "add-email": {
-        "function": "add_email",
+        "description": "Add an email address to a contact.",
         "example": "add-email 'John Doe' 'john@doe.com'",
     },
     "edit-email": {
-        "function": "edit_email",
+        "description": "Edit the email address of a contact.",
         "example": "edit-email 'John Doe' 'john@doe.com'",
     },
     "delete-email": {
-        "function": "delete_email",
+        "description": "Delete the email address of a contact.",
         "example": "delete-email 'John Doe'",
     },
     "add-address": {
-        "function": "add_address",
+        "description": "Add a physical address to a contact.",
         "example": "add-address 'John Doe' 'address here'",
     },
     "edit-address": {
-        "function": "add_address",
+        "description": "Edit the physical address of a contact.",
         "example": "edit-address 'John Doe' 'new address here'",
     },
     "delete-address": {
-        "function": "delete_address",
+        "description": "Delete the physical address of a contact.",
         "example": "delete-address 'John Doe'",
     },
     "add-birthday": {
-        "function": "add_birthday",
+        "description": "Add a birthday to a contact.",
         "example": "add-birthday 'John' '20.01.1990'",
     },
     "update-birthday": {
-        "function": "add_birthday",
+        "description": "Update the birthday of a contact.",
         "example": "update-birthday 'John' '20.01.1990'",
     },
     "show-birthday": {
-        "function": "show_birthday",
+        "description": "Show the birthday of a contact.",
         "example": "show-birthday 'John'",
     },
     "show-birthdays": {
-        "function": "show_birthdays",
+        "description": "Show upcoming birthdays.",
         "example": "show-birthdays",
     },
     "find-birthdays": {
-        "function": "find_birthdays",
+        "description": "Find birthdays within a specified number of days.",
         "example": "find-birthdays 5",
     },
     "update-contact": {
-        "function": "update_contact",
+        "description": "Update contact information.",
         "example": "update-contact 'John Doe'",
     },
     "delete-contact": {
-        "function": "delete_contact",
+        "description": "Delete a contact.",
         "example": "delete-contact 'John'",
     },
     "add-note": {
-        "function": "add_note",
+        "description": "Add a note to a contact.",
         "example": "add-note 'John'",
     },
     "update-note": {
-        "function": "edit_note",
+        "description": "Update a note for a contact.",
         "example": "edit-note 'John'",
     },
     "find-notes-by-tag": {
-        "function": "find_note_by_tag",
+        "description": "Find notes by tag.",
         "example": "find-notes-by-tag 'tag'",
     },
     "find-notes": {
-        "function": "find_notes",
+        "description": "Find notes by search text.",
         "example": "find-notes 'search text'",
     },
     "delete-note": {
-        "function": "delete_note",
+        "description": "Delete a note for a contact.",
         "example": "delete-note 'John'",
     },
     "rename": {
-        "function": "rename",
+        "description": "Rename a contact.",
         "example": "rename 'John' 'Jack'",
     },
 }
-
-
-
