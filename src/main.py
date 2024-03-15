@@ -1,10 +1,10 @@
-from introduction_dialogs import introduction, last_donation_dialog
-from models.notes import Notes
+from src.introduction_dialogs import introduction, last_donation_dialog
+from src.models.notes import Notes
 from src.models.address_book import AddressBook
 from src.bot_commands import *
 from src.utils.show_message_dialog import show_message_dialog
 from src.utils.show_input_dialog import show_input_dialog
-from utils.files_methods import load_from_file, save_to_file
+from src.utils.files_methods import load_from_file, save_to_file
 
 
 def main():
