@@ -25,7 +25,7 @@ def main():
             break
 
         elif command == "help":
-            response = help_me()
+            response = help()
         elif command == "hello":
             response = "How can I help you?"
         elif command == "add-contact":

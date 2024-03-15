@@ -212,7 +212,7 @@ def find_note_by_tag(args, address_book):
     return address_book.find_note_by_tag(tag)
 
 
-def help_me():
+def help():
     print("\033[94m", "Доступні команди:", "\033[0m")
     command_d = dict(sorted(commands_l.items()))
 
