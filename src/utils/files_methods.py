@@ -21,3 +21,14 @@ def load_from_file(filename, book, note):
     except FileNotFoundError:
         book.data = {}
         note.notes = []
+
+def save_name_to_file(name):
+    with open("username.txt", "w+") as file:
+        file.write(name)
+
+def load_name_from_file():
+    try:
+        with open("username.txt", "r") as file:
+            return file.read()
+    except FileNotFoundError:
+        return None

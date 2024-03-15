@@ -1,6 +1,7 @@
 from src.card.validate_card import Card
 from src.utils.show_input_dialog import show_input_dialog
 from src.utils.show_message_dialog import show_message_dialog
+from src.utils.files_methods import load_name_from_file, save_name_to_file
 
 PERSONAL_ASSISTANT_TITLE = 'Personal Assistant Diia'
 VALID_CHOICE = ['1', '2']
@@ -8,8 +9,13 @@ VALID_CHOICE = ['1', '2']
 
 def greeting_dialog():
     show_message_dialog(PERSONAL_ASSISTANT_TITLE, "Bac вітає Особистий помічник Дія!")
-    user_name = show_input_dialog('Enter your name', 'Як до Bac можна звертатися?')
-    return user_name
+    if load_name_from_file() != None:
+        user_name = load_name_from_file()
+        return user_name
+    else:
+        user_name = show_input_dialog('Enter your name', 'Як до Bac можна звертатися?')
+        save_name_to_file(user_name)
+        return user_name
 
 
 def free_version_dialog(user_name):
