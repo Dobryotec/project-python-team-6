@@ -59,7 +59,7 @@ commands_l = {
         "example": "delete-contact 'John'",
     },
     "add-note": {
-        "description": "Add a note to a contact.",
+        "description": "Add a note",
         "example": "add-note",
     },
     "find-note": {
@@ -71,11 +71,11 @@ commands_l = {
         "example": "find-note-by-tag 'tag'",
     },
     "update-note-by-title": {
-        "description": "Update a note for a contact.",
+        "description": "Update a note",
         "example": "update-note-by-title 'title'",
     },
     "delete-note": {
-        "description": "Delete a note for a contact.",
+        "description": "Delete a note",
         "example": "delete-note 'note'",
     },
 }
