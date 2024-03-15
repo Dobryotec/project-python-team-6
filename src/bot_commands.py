@@ -211,6 +211,11 @@ def find_note_by_tag(args, address_book):
     tag = args[0]
     return address_book.find_note_by_tag(tag)
 
+@input_error
+def update_note_by_title(args, notes):
+    title, new_title, new_text = args
+    return notes.update_note_by_title(title, new_title, new_text)
+
 
 def help_me():
     print("\033[94m", "Available commands:", "\033[0m")

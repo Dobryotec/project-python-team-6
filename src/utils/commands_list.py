@@ -101,7 +101,7 @@ commands_l = {
         "description": "Add a note to a contact.",
         "example": "add-note 'John'",
     },
-    "update-note": {
+    "update-note-by-title": {
         "description": "Update a note for a contact.",
         "example": "edit-note 'John'",
     },
