@@ -3,7 +3,7 @@ from src.bot_commands import *
 
 commands_l = {
     "add-contact": {
-        "description": "Add a new contact with a name and phone number.",
+        "description": "New contact with a name and phone number.",
         "example": "add-contact 'John' '0501234455'",
     },
     "change-phone": {
@@ -68,7 +68,7 @@ commands_l = {
     },
     "find-note-by-tag": {
         "description": "Find a note by tag.",
-        "example": "find-note-by-tag 'John' 'tag'",
+        "example": "find-note-by-tag 'tag'",
     },
     "update-note-by-title": {
         "description": "Update a note for a contact.",
