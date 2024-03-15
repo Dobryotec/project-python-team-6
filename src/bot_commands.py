@@ -65,7 +65,7 @@ def change_contact(args, address_book):
         address_book[name].edit_phone(old_phone, new_phone)
         return "Контакт змінено."
     else:
-        raise KeyError(f"Контакту з ім'ям '{name}' ще не існує.")
+        raise KeyError(f"Контакту з ім'ям '{name}' не існує.")
 
 
 @input_error
