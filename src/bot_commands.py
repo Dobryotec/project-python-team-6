@@ -211,6 +211,14 @@ def find_note_by_tag(args, address_book):
     tag = args[0]
     return address_book.find_note_by_tag(tag)
 
+@input_error
+def update_note_by_title(notes):
+    title = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Enter title: ")
+    text = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Enter new text (optional): ")
+    tags = show_input_dialog(DEFAULT_INPUT_MESSAGE, 'Enter new tags separated by coma (optional): ')
+    notes.update_note_by_title(title, text, tags)
+    return f"Note with tile: '{title}' updated."
+
 
 def help_me():
     print("\033[94m", "Доступні команди:", "\033[0m")

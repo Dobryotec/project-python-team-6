@@ -47,3 +47,11 @@ class Notes:
                 text = note.text.value
                 notes.append(text if text else note.title.value)
         return '\n'.join(notes)
+
+    def update_note_by_title(self, title, new_title, new_text):
+        for note in self.notes:
+            if note.title.value == title:
+                note.title.value = new_title
+                note.text.value = new_text
+                return f"Note '{title}' updated."
+        return f"Note '{title}' not found."

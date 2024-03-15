@@ -64,6 +64,8 @@ def main():
             response = find_note(args, notes)
         elif command == "find-note-by-tag":
             response = find_note_by_tag(args, notes)
+        elif command == "update-note-by-title":
+            response = update_note_by_title(notes)
         else:
             response = "Некоректна команда. Щоб переглянути перелік команд, введіть 'help'"
 
