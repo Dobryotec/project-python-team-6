@@ -2,7 +2,7 @@ from setuptools import setup,find_namespace_packages
 
 
 
-setup(name='personal_assistant_bot',
+setup(name='personal_assistant_diia',
       version='1.0.0',
       description="""Personal Assistant Bot is a command-line tool designed to assist you in organizing your contacts 
                      and notes efficiently. With this application, you can easily manage your contact information, 
