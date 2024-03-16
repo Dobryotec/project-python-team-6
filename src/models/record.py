@@ -18,13 +18,11 @@ class Record:
         for p in self.phones:
             if p.value == phone:
                 self.phones.remove(p)
-                break
 
-    def edit_phone(self, old_phone, new_phone):
-        for p in self.phones:
-            if p.value == old_phone:
-                p.value = new_phone
-                break
+    def edit_phone(self, old_number, new_number):
+        if old_number in [p.value for p in self.phones]:
+            self.remove_phone(old_number)
+            self.add_phone(new_number)
     
     def find_phone(self, phone):      
         for p in self.phones:
