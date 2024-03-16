@@ -64,7 +64,6 @@ Personal Assistant Bot is a command-line tool designed to assist you in organizi
 | `delete-note`  | Delete a note from your notes          | `delete-note`                         |
 | `find-note-by-tag`    | Find note by tag         | `find-note-by-tag `                        |
 | `find-note`     | Find a note by title                | `find-note`
-                         |
 | `show-notes`     | Show all notes      | `show-notes`
 
 ## Technologies Used
