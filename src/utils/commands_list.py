@@ -4,78 +4,78 @@ from src.bot_commands import *
 commands_l = {
     "add-contact": {
         "description": "New contact with a name and phone number.",
-        "example": "add-contact 'John' '0501234455'",
+        "example": "command 'John' '0501234455'",
     },
     "change-phone": {
         "description": "Change the phone number for a contact.",
-        "example": "change-phone 'John' 'old phone' 'new phone",
+        "example": "command 'John' 'old phone' 'new phone",
     },
-    "all_contacts": {
+    "all-contacts": {
         "description": "Show all contacts.",
-        "example": "all-contacts",
+        "example": "command",
     },
     "show-phone": {
         "description": "Show all phone numbers for a contact.",
-        "example": "show-phone 'name'",
+        "example": "command 'name'",
     },
     "add-birthday": {
         "description": "Add a birthday to a contact.",
-        "example": "add-birthday 'John' '20.01.1990'",
+        "example": "command 'John' '20.01.1990'",
     },
     "show-birthday": {
         "description": "Show the birthday of a contact.",
-        "example": "show-birthday 'John'",
+        "example": "command 'John'",
     },
     "birthdays": {
         "description": "Show upcoming birthdays.",
-        "example": "birthdays",
+        "example": "command",
     },
     "add-address": {
         "description": "Add a physical address to a contact.",
-        "example": "add-address 'John' 'address here'",
+        "example": "command 'John' 'address here'",
     },
     "show-address": {
         "description": "Show the address of a contact.",
-        "example": "show-address 'John'",
+        "example": "command 'John'",
     },
     "add-email": {
         "description": "Add an email address to a contact.",
-        "example": "add-email 'John' 'john@doe.com'",
+        "example": "command 'John' 'john@doe.com'",
     },
     "show-email": {
         "description": "Show the email of a contact.",
-        "example": "show-email 'John'",
+        "example": "command 'John'",
     },
     "change-email": {
         "description": "Change the email address of a contact.",
-        "example": "change-email 'John' 'new email'",
+        "example": "command 'John' 'new email'",
     },
     "find-contact": {
         "description": "Find a contact by name or email.",
-        "example": "find-contact 'John'",
+        "example": "command 'John'",
     },
     "delete-contact": {
         "description": "Delete a contact.",
-        "example": "delete-contact 'John'",
+        "example": "command 'John'",
     },
     "add-note": {
         "description": "Add a note",
-        "example": "add-note",
+        "example": "command",
     },
     "find-note": {
         "description": "Find a note by title.",
-        "example": "find-note 'note'",
+        "example": "command 'note'",
     },
     "find-note-by-tag": {
         "description": "Find a note by tag.",
-        "example": "find-note-by-tag 'tag'",
+        "example": "command 'tag'",
     },
     "update-note-by-title": {
         "description": "Update a note",
-        "example": "update-note-by-title 'title'",
+        "example": "command 'title'",
     },
     "delete-note": {
         "description": "Delete a note",
-        "example": "delete-note 'note'",
+        "example": "command 'note'",
     },
 }
