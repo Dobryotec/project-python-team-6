@@ -61,10 +61,11 @@ Personal Assistant Bot is a command-line tool designed to assist you in organizi
 | -------------- | -------------------------------------- | -------------------------------------------- |                                          
 | `add-note`     | Add a note               | `add-note`                            |
 | `update-note-by-title`    | Update a note   | `update-note-by-title`                           |
-| `delete-note`  | Delete a note from your notes          | `delete-note 'your title note'`                         |
-| `find-note-by-tag`    | Find note by tag         | `find-note-by-tag 'your tag note'`                        |
-| `find-note`     | Find a note by title                | `find-note 'your title note'`
-
+| `delete-note`  | Delete a note from your notes          | `delete-note`                         |
+| `find-note-by-tag`    | Find note by tag         | `find-note-by-tag `                        |
+| `find-note`     | Find a note by title                | `find-note`
+                         |
+| `show-notes`     | Show all notes      | `show-notes`
 
 ## Technologies Used
 
@@ -75,5 +76,6 @@ Personal Assistant Diia is built using the following technologies:
 - [prompt_toolkit](https://python-prompt-toolkit.readthedocs.io/en/latest/): Python library for building powerful interactive command-line applications.
 
 These technologies were chosen for their robustness, ease of use, and suitability for building command-line applications.
+
 
 
