@@ -46,7 +46,9 @@ class Notes:
             if tag in note.tags:
                 text = note.text.value
                 notes.append(text if text else note.title.value)
-        return '\n'.join(notes)
+        if notes:
+            return '\n'.join(notes)
+        return f"Приміток за тегом: '{tag}' не знайдено."
 
     def update_note_by_title(self, title, new_text, new_tags):
         for note in self.notes:
@@ -63,4 +65,6 @@ class Notes:
         for note in self.notes:
             tags = ','.join(note.tags)
             notes.append(f'Заголовок {note.title.value}: теги {tags}')
-        return '\n'.join(notes)
+        if notes:
+            return '\n'.join(notes)
+        return f"Приміток не знайдено."

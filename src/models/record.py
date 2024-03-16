@@ -61,4 +61,8 @@ class Record:
             email_info = f", email: {self.email.value}"
         else:
             email_info = ""
-        return f"Ім'я контакту: {self.name.value}, номер телефону: {phones_info}{birthday_info}{email_info}" 
+        address_info = f", адреса: {self.address.value}" if self.address else ""
+        return (
+            f"Ім'я контакту: {self.name.value}, номер телефону: "
+            f"{phones_info}{birthday_info}{email_info}{address_info}"
+        )
