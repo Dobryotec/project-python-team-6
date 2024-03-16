@@ -64,7 +64,7 @@ commands_l = {
     },
     "find-note": {
         "description": "Find a note by title.",
-        "example": "command 'note'",
+        "example": "command",
     },
     "find-note-by-tag": {
         "description": "Find a note by tag.",
@@ -72,7 +72,7 @@ commands_l = {
     },
     "update-note-by-title": {
         "description": "Update a note",
-        "example": "command 'title'",
+        "example": "command",
     },
     "delete-note": {
         "description": "Delete a note",

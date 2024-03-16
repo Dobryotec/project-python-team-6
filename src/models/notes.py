@@ -48,11 +48,13 @@ class Notes:
                 notes.append(text if text else note.title.value)
         return '\n'.join(notes)
 
-    def update_note_by_title(self, title, new_title, new_text):
+    def update_note_by_title(self, title, new_text, new_tags):
         for note in self.notes:
             if note.title.value == title:
-                note.title.value = new_title
-                note.text.value = new_text
+                if new_text:
+                    note.text = Text(new_text)
+                if new_tags:
+                    note.add_tags(new_tags)
                 return f"Примітку '{title}' оновлено."
         return f"Примітку '{title}' не знайдено."
 
