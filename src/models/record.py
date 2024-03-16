@@ -23,6 +23,9 @@ class Record:
         if old_number in [p.value for p in self.phones]:
             self.remove_phone(old_number)
             self.add_phone(new_number)
+            return "Контакт змінено."
+        else:
+            return f"У контакта з ім'ям '{self.name}' немає такого номера: {old_number}."
     
     def find_phone(self, phone):      
         for p in self.phones:

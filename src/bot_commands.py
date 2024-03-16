@@ -62,8 +62,10 @@ def find_contact(args, address_book):
 def change_contact(args, address_book):
     name, old_phone, new_phone = args
     if name in address_book:
-        address_book[name].edit_phone(old_phone, new_phone)
-        return "Контакт змінено."
+        if len(new_phone) != 10 or not new_phone.isdigit():
+            raise PhoneException
+        response = address_book[name].edit_phone(old_phone, new_phone)
+        return response
     else:
         raise KeyError(f"Контакту з ім'ям '{name}' не існує.")
 
