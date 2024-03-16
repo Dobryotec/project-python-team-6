@@ -195,29 +195,35 @@ def add_note(notes):
 
 
 @input_error
-def delete_note(args, notes):
-    title = args[0]
+def delete_note(notes):
+    title = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Введіть заголовок: ")
     return notes.delete_note_by_title(title)
 
 
 @input_error
-def find_note(args, notes):
-    title = args[0]
+def find_note(notes):
+    title = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Введіть заголовок: ")
     return notes.find_note_by_title(title)
 
 
 @input_error
-def find_note_by_tag(args, address_book):
-    tag = args[0]
-    return address_book.find_note_by_tag(tag)
+def find_note_by_tag(notes):
+    tag = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Введіть тег: ")
+    return notes.find_note_by_tag(tag)
+
+
+@input_error
+def show_notes(notes):
+    return notes.show_notes()
+
 
 @input_error
 def update_note_by_title(notes):
-    title = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Enter title: ")
-    text = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Enter new text (optional): ")
-    tags = show_input_dialog(DEFAULT_INPUT_MESSAGE, 'Enter new tags separated by coma (optional): ')
+    title = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Введіть заголовок: ")
+    text = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Введіть текст (необов'язково): ")
+    tags = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Введіть теги через кому (необов'язково): ")
     notes.update_note_by_title(title, text, tags)
-    return f"Note with tile: '{title}' updated."
+    return f"Примітка з заголовком: '{title}' успішно оновлена."
 
 
 def help():

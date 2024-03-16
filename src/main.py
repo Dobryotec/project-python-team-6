@@ -59,13 +59,15 @@ def main():
         elif command == "add-note":
             response = add_note(notes)
         elif command == "delete-note":
-            response = delete_note(args, notes)
+            response = delete_note(notes)
         elif command == "find-note":
-            response = find_note(args, notes)
+            response = find_note(notes)
         elif command == "find-note-by-tag":
-            response = find_note_by_tag(args, notes)
+            response = find_note_by_tag(notes)
         elif command == "update-note-by-title":
             response = update_note_by_title(notes)
+        elif command == "show-notes":
+            response = show_notes(notes)
         else:
             response = "Некоректна команда. Щоб переглянути перелік команд, введіть 'help'"
 
