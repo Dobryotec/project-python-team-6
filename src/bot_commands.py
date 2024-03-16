@@ -220,8 +220,8 @@ def show_notes(notes):
 @input_error
 def update_note_by_title(notes):
     title = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Введіть заголовок: ")
-    text = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Введіть текст (необов'язково): ")
-    tags = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Введіть теги через кому (необов'язково): ")
+    text = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Введіть новий текст (необов'язково): ")
+    tags = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Введіть нові теги через кому (необов'язково): ")
     notes.update_note_by_title(title, text, tags)
     return f"Примітка з заголовком: '{title}' успішно оновлена."
 
