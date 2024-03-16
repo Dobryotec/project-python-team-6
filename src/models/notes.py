@@ -53,5 +53,12 @@ class Notes:
             if note.title.value == title:
                 note.title.value = new_title
                 note.text.value = new_text
-                return f"Note '{title}' updated."
-        return f"Note '{title}' not found."
+                return f"Примітку '{title}' оновлено."
+        return f"Примітку '{title}' не знайдено."
+
+    def show_notes(self):
+        notes = []
+        for note in self.notes:
+            tags = ','.join(note.tags)
+            notes.append(f'Заголовок {note.title.value}: теги {tags}')
+        return '\n'.join(notes)
