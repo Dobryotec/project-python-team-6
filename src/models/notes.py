@@ -67,4 +67,4 @@ class Notes:
             notes.append(f"Заголовок {note.title.value}: теги {tags}")
         if notes:
             return "\n".join(notes)
-        return f"Приміток не знайдено."
+        return "Приміток не знайдено."

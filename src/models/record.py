@@ -1,4 +1,4 @@
-from src.models.address_book_fields.fields import *
+from src.models.address_book_fields.fields import (Name, Phone, Birthday, Email, Address)
 
 
 class Record:
