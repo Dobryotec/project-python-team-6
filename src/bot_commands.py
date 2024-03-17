@@ -1,13 +1,14 @@
+from tabulate import tabulate
+
 from src.exceptions import PhoneException, DateFormatException
 from src.models.record import Record
 from src.models.address_book_fields.fields import Day
 
-from tabulate import tabulate
 from src.utils.commands_list import commands_l
 
 from src.utils.show_input_dialog import show_input_dialog
 
-DEFAULT_INPUT_MESSAGE = 'Введіть команду.'
+DEFAULT_INPUT_MESSAGE = "Введіть команду."
 
 
 def input_error(func):
@@ -78,7 +79,7 @@ def delete_contact(args, address_book):
         return f"Контакт '{name}' успішно видалено."
     else:
         raise KeyError(f"Контакту з ім'ям '{name}' не існує.")
-    
+
 
 @input_error
 def add_email(args, address_book):
@@ -91,14 +92,14 @@ def add_email(args, address_book):
 
 
 @input_error
-def change_email(args, address_book):  
+def change_email(args, address_book):
     name, new_email = args
     if name in address_book:
         address_book[name].edit_email(new_email)
         return "Електронну пошту змінено."
     else:
         raise KeyError(f"Контакту з ім'ям '{name}' не існує.")
-    
+
 
 @input_error
 def show_email(args, address_book):
@@ -106,7 +107,9 @@ def show_email(args, address_book):
     if name in address_book and address_book[name].email:
         return f"Email контакту '{name}': {address_book[name].email.value}"
     else:
-        raise KeyError(f"Контакту з ім'ям '{name}' не існує або адреса електронної пошти для цього контакту не задана.")
+        raise KeyError(
+            f"Контакту з ім'ям '{name}' не існує або адреса електронної пошти для цього контакту не задана."
+        )
 
 
 @input_error
@@ -134,11 +137,11 @@ def show_all_contacts(address_book):
     contacts_info = ""
     if address_book.values():
         for record in address_book.values():
-            contacts_info += f'{record}\n' 
+            contacts_info += f"{record}\n"
     else:
         contacts_info = "У Вас ще немає жодного контакту."
 
-    return contacts_info 
+    return contacts_info
 
 
 @input_error
@@ -155,7 +158,7 @@ def add_birthday(args, address_book):
 def add_address(args, address_book):
     name, *address = args
     if name in address_book:
-        address_book[name].add_address(' '.join(address))
+        address_book[name].add_address(" ".join(address))
         return f"Адресу додано до контакту '{name}'"
     else:
         raise KeyError(f"Контакту з ім'ям '{name}' не існує.")
@@ -167,7 +170,9 @@ def show_birthday(args, address_book):
     if name in address_book and address_book[name].birthday:
         return f"День народження контакту '{name}': {address_book[name].birthday}"
     else:
-        raise KeyError(f"Контакту з ім'ям '{name}' не існує або дата народження для цього контакту не задана.")
+        raise KeyError(
+            f"Контакту з ім'ям '{name}' не існує або дата народження для цього контакту не задана."
+        )
 
 
 @input_error
@@ -181,7 +186,9 @@ def birthdays(book):
             if birthdays_within_days:
                 output = ""
                 for birthday_date, names in birthdays_within_days.items():
-                    output += f"{birthday_date.strftime('%A, %d %B')}: {', '.join(names)}\n"
+                    output += (
+                        f"{birthday_date.strftime('%A, %d %B')}: {', '.join(names)}\n"
+                    )
                 return output
             else:
                 return "Немає найближчих днів народження"
@@ -191,7 +198,9 @@ def birthdays(book):
 def add_note(notes):
     title = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Введіть заголовок: ")
     text = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Введіть текст (необов'язково): ")
-    tags = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Введіть теги через кому (необов'язково): ")
+    tags = show_input_dialog(
+        DEFAULT_INPUT_MESSAGE, "Введіть теги через кому (необов'язково): "
+    )
     notes.add_note(title, text, tags)
     return f"Примітка з заголовком: '{title}' успішно додана."
 
@@ -222,26 +231,22 @@ def show_notes(notes):
 @input_error
 def update_note_by_title(notes):
     title = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Введіть заголовок: ")
-    text = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Введіть новий текст (необов'язково): ")
-    tags = show_input_dialog(DEFAULT_INPUT_MESSAGE, "Введіть нові теги через кому (необов'язково): ")
+    text = show_input_dialog(
+        DEFAULT_INPUT_MESSAGE, "Введіть новий текст (необов'язково): "
+    )
+    tags = show_input_dialog(
+        DEFAULT_INPUT_MESSAGE, "Введіть нові теги через кому (необов'язково): "
+    )
     notes.update_note_by_title(title, text, tags)
     return f"Примітка з заголовком: '{title}' успішно оновлена."
 
 
-def help():
+def help_command():
     command_d = dict(sorted(commands_l.items()))
 
-    hlp_tbl_headers = [
-        "Command",
-        "Example",
-        "Description"
-    ]
+    hlp_tbl_headers = ["Command", "Example", "Description"]
     hlp_tbl = [
-        [
-            command,
-            info["example"],
-            info["description"]
-        ]
+        [command, info["example"], info["description"]]
         for command, info in command_d.items()
     ]
-    return tabulate(hlp_tbl, hlp_tbl_headers, tablefmt="rounded_grid", stralign='left')
+    return tabulate(hlp_tbl, hlp_tbl_headers, tablefmt="rounded_grid", stralign="left")

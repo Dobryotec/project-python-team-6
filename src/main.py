@@ -1,7 +1,30 @@
 from src.introduction_dialogs import introduction, last_donation_dialog
 from src.models.notes import Notes
 from src.models.address_book import AddressBook
-from src.bot_commands import *
+from src.bot_commands import (
+    help_command,
+    parse_input,
+    add_contact,
+    change_contact,
+    show_phone,
+    show_all_contacts,
+    add_birthday,
+    show_birthday,
+    birthdays,
+    add_address,
+    show_address,
+    add_email,
+    show_email,
+    change_email,
+    find_contact,
+    delete_contact,
+    add_note,
+    delete_note,
+    find_note,
+    find_note_by_tag,
+    update_note_by_title,
+    show_notes,
+)
 from src.utils.show_message_dialog import show_message_dialog
 from src.utils.show_input_dialog import show_input_dialog
 from src.utils.files_methods import load_from_file, save_to_file
@@ -14,7 +37,9 @@ def main():
     user_name = introduction()
 
     while True:
-        user_input = show_input_dialog(f"How can I assist you, {user_name}?", 'Будь ласка, введіть вашу команду:')
+        user_input = show_input_dialog(
+            f"How can I assist you, {user_name}?", "Будь ласка, введіть вашу команду:"
+        )
         if user_input is None:
             break
 
@@ -25,7 +50,7 @@ def main():
             break
 
         elif command == "help":
-            response = help()
+            response = help_command()
         elif command == "hello":
             response = "How can I help you?"
         elif command == "add-contact":
@@ -69,9 +94,11 @@ def main():
         elif command == "show-notes":
             response = show_notes(notes)
         else:
-            response = "Некоректна команда. Щоб переглянути перелік команд, введіть 'help'"
+            response = (
+                "Некоректна команда. Щоб переглянути перелік команд, введіть 'help'"
+            )
 
-        show_message_dialog('Personal Assistant Diia', response)
+        show_message_dialog("Personal Assistant Diia", response)
 
     # При виході з програми зберігаємо дані у файл
     save_to_file("data.pkl", book.data, notes.notes)
