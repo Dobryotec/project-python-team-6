@@ -14,7 +14,7 @@ class Note:
             return f"Заголовок: {self.title.value}"
 
     def add_tags(self, tags):
-        self.tags = [str(tag).strip() for tag in tags.split(',')]
+        self.tags = [str(tag).strip() for tag in tags.split(",")]
 
 
 class Notes:
@@ -47,7 +47,7 @@ class Notes:
                 text = note.text.value
                 notes.append(text if text else note.title.value)
         if notes:
-            return '\n'.join(notes)
+            return "\n".join(notes)
         return f"Приміток за тегом: '{tag}' не знайдено."
 
     def update_note_by_title(self, title, new_text, new_tags):
@@ -63,8 +63,8 @@ class Notes:
     def show_notes(self):
         notes = []
         for note in self.notes:
-            tags = ','.join(note.tags)
-            notes.append(f'Заголовок {note.title.value}: теги {tags}')
+            tags = ",".join(note.tags)
+            notes.append(f"Заголовок {note.title.value}: теги {tags}")
         if notes:
-            return '\n'.join(notes)
+            return "\n".join(notes)
         return f"Приміток не знайдено."

@@ -1,6 +1,3 @@
-from src.bot_commands import *
-
-
 commands_l = {
     "add-contact": {
         "description": "New contact with a name and phone number.",

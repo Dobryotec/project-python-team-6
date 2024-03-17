@@ -12,8 +12,8 @@ def load_from_file(filename, book, note):
         with open(filename, "rb") as file:
             content = pickle.load(file)
 
-        if content.get('records'):
-            for k, v in content.get('records').items():
+        if content.get("records"):
+            for k, v in content.get("records").items():
                 book.add_record(v)
 
         note.notes = content.get("notes")
@@ -22,9 +22,11 @@ def load_from_file(filename, book, note):
         book.data = {}
         note.notes = []
 
+
 def save_name_to_file(name):
     with open("username.txt", "w+") as file:
         file.write(name)
+
 
 def load_name_from_file():
     try:

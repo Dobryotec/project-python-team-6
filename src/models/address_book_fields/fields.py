@@ -13,7 +13,9 @@ class Field:
         if self.required and not self.value:
             raise ValueError("Це поле обов'язкове для заповнення.")
         if self.max_length is not None and len(str(self.value)) > self.max_length:
-            raise ValueError(f"Це поле повинно мати довжину не більше {self.max_length} символів.")
+            raise ValueError(
+                f"Це поле повинно мати довжину не більше {self.max_length} символів."
+            )
         # Додаткові перевірки
 
     def __str__(self):
@@ -44,11 +46,13 @@ class Address(Field):
             raise ValueError("Адреса повинна містити більше 10 символів.")
         if str(self.value).isdigit():
             raise ValueError("Адреса повинна містити не лише цифри.")
-        
+
 
 class Email(Field):
     def validate_email(self):
-        if not re.match(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", self.value):
+        if not re.match(
+            r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", self.value
+        ):
             raise ValueError("Неправильний формат електронної пошти.")
 
 

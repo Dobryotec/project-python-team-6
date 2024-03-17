@@ -17,13 +17,14 @@ class AddressBook(UserDict):
         del self.data[name]
 
     def get_birthdays_within_days(self, days):
-
         birthdays_within_days = defaultdict(list)
         today = datetime.today()
 
         for record in self.values():
             if record.birthday is not None:
-                birthday_this_year = datetime.strptime(record.birthday.value, '%d.%m.%Y').replace(year=today.year)
+                birthday_this_year = datetime.strptime(
+                    record.birthday.value, "%d.%m.%Y"
+                ).replace(year=today.year)
 
                 if birthday_this_year < today:
                     birthday_this_year = birthday_this_year.replace(year=today.year + 1)
