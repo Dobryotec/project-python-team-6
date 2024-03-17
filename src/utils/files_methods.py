@@ -13,7 +13,7 @@ def load_from_file(filename, book, note):
             content = pickle.load(file)
 
         if content.get("records"):
-            for k, v in content.get("records").items():
+            for _, v in content.get("records").items():
                 book.add_record(v)
 
         note.notes = content.get("notes")
@@ -24,13 +24,13 @@ def load_from_file(filename, book, note):
 
 
 def save_name_to_file(name):
-    with open("username.txt", "w+") as file:
+    with open("username.txt", "w+", encoding="utf-8") as file:
         file.write(name)
 
 
 def load_name_from_file():
     try:
-        with open("username.txt", "r") as file:
+        with open("username.txt", "r", encoding="utf-8") as file:
             return file.read()
     except FileNotFoundError:
         return None

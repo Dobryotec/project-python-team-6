@@ -142,7 +142,7 @@ def last_donation_dialog():
     if donation_response == "1":
         show_message_dialog(
             PERSONAL_ASSISTANT_TITLE,
-            "Дякуємо, що обрали наш бот i за Ваш °внесок до перемоги!",
+            "Дякуємо, що обрали наш бот i за Ваш внесок до перемоги!",
         )
 
     if donation_response == "2":

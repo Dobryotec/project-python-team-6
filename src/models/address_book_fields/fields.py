@@ -36,8 +36,8 @@ class Birthday(Field):
     def validate_date(self):
         try:
             datetime.strptime(self.value, "%d.%m.%Y").strftime("%d.%m.%Y")
-        except ValueError:
-            raise DateFormatException
+        except ValueError as exc:
+            raise DateFormatException from exc
 
 
 class Address(Field):
