@@ -98,7 +98,7 @@ def main():
                 "Некоректна команда. Щоб переглянути перелік команд, введіть 'help'"
             )
 
-        show_message_dialog("Personal Assistant Diia", response)
+        show_message_dialog("Personal Assistant Diia.eBook", response)
 
     # При виході з програми зберігаємо дані у файл
     save_to_file("data.pkl", book.data, notes.notes)

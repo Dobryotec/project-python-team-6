@@ -50,7 +50,7 @@ def add_contact(args, address_book):
         record.add_phone(phone)
         address_book.add_record(record)
 
-    return "Контакт додано."
+    return f"Контакт з ім'ям {name} та телефоном {phone} додано"
 
 
 @input_error
