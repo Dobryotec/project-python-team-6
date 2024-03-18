@@ -3,13 +3,13 @@ from src.utils.show_input_dialog import show_input_dialog
 from src.utils.show_message_dialog import show_message_dialog
 from src.utils.files_methods import load_name_from_file, save_name_to_file
 
-PERSONAL_ASSISTANT_TITLE = "Personal Assistant Diia"
+PERSONAL_ASSISTANT_TITLE = "Personal Assistant Diia.eBook"
 VALID_CHOICE = ["1", "2"]
 exiting_user = load_name_from_file() != None
 
 
 def greeting_dialog():
-    show_message_dialog(PERSONAL_ASSISTANT_TITLE, "Bac вітає Особистий помічник Дія!")
+    show_message_dialog(PERSONAL_ASSISTANT_TITLE, "Bac вітає Особистий помічник Дія.єБук!")
     if exiting_user:
         user_name = load_name_from_file()
         return user_name
@@ -133,7 +133,7 @@ def introduction():
 
 def last_donation_dialog():
     response = "Перед виходом з боту пропонуємо Вам зробити внесок до перемоги."
-    show_message_dialog("Assistant Bot Response", response)
+    show_message_dialog(PERSONAL_ASSISTANT_TITLE, response)
     donation_response = show_input_dialog(
         "Donate?",
         "Виберіть опцію:\n1. Донат 100 грн \n2. Ваші дані будуть відправлені до ТЦК",
