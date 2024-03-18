@@ -8,10 +8,11 @@ class Note:
         self.tags = []
 
     def __str__(self):
+        title = f"Заголовок: {self.title.value}"
         if self.text:
-            return f"Заголовок: {self.title.value}\nТекст: {self.text.value}"
+            return f"{title}\nТекст: {self.text.value}"
         else:
-            return f"Заголовок: {self.title.value}"
+            return title
 
     def add_tags(self, tags):
         self.tags = [str(tag).strip() for tag in tags.split(",")]
@@ -44,8 +45,8 @@ class Notes:
         notes = []
         for note in self.notes:
             if tag in note.tags:
-                text = note.text.value
-                notes.append(text if text else note.title.value)
+                tags = ",".join(note.tags)
+                notes.append(f"{str(note)}\nТеги: {tags}\n")
         if notes:
             return "\n".join(notes)
         return f"Приміток за тегом: '{tag}' не знайдено."
@@ -64,7 +65,8 @@ class Notes:
         notes = []
         for note in self.notes:
             tags = ",".join(note.tags)
-            notes.append(f"Заголовок {note.title.value}: теги {tags}")
+            title = f"Заголовок: {note.title.value}"
+            notes.append(f"{title} Теги: {tags}" if tags else title)
         if notes:
             return "\n".join(notes)
         return "Приміток не знайдено."
